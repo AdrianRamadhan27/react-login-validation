@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-login-validation/static/css/main.37fa7288.css",
-    "main.js": "/react-login-validation/static/js/main.91f5f729.js",
+    "main.css": "/react-login-validation/static/css/main.490b2738.css",
+    "main.js": "/react-login-validation/static/js/main.e1c5cfc0.js",
     "static/js/453.1befdb83.chunk.js": "/react-login-validation/static/js/453.1befdb83.chunk.js",
     "static/media/logo.svg": "/react-login-validation/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/react-login-validation/index.html",
-    "main.37fa7288.css.map": "/react-login-validation/static/css/main.37fa7288.css.map",
-    "main.91f5f729.js.map": "/react-login-validation/static/js/main.91f5f729.js.map",
+    "main.490b2738.css.map": "/react-login-validation/static/css/main.490b2738.css.map",
+    "main.e1c5cfc0.js.map": "/react-login-validation/static/js/main.e1c5cfc0.js.map",
     "453.1befdb83.chunk.js.map": "/react-login-validation/static/js/453.1befdb83.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.37fa7288.css",
-    "static/js/main.91f5f729.js"
+    "static/css/main.490b2738.css",
+    "static/js/main.e1c5cfc0.js"
   ]
 }
