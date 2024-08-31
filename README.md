@@ -1,6 +1,6 @@
 # Tugas 3 Digistar Class Hacker Front-End
 
-Aplikasi yang terdeploy dapat diakses di https://adrianramadhan27.github.io/
+Aplikasi yang terdeploy dapat diakses di https://adrianramadhan27.github.io/react-login-validation
 
 ## Base Page
 ![Login Page](image.png)
