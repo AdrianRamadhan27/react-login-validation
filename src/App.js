@@ -7,14 +7,14 @@ import Home from './pages/Home';
 function App() {
   return (
     <Router>
-    <div className="App">
+    <div className="App bg-gray-800">
       <nav className="bg-slate-600">
-        <ul className="inline-flex p-5">
+        <ul className="justify-between flex">
           <Link to="/">
-          <li className="m-5 text-white hover:text-violet-950">Home</li>
+          <li className="text-lg m-5 text-white hover:text-violet-950">Home</li>
           </Link>
           <Link to="/login">
-          <li className="m-5 text-white hover:text-violet-950">Login</li>
+          <li className="text-lg m-5 text-white hover:text-violet-950">Login</li>
           </Link>
         </ul>
       </nav>

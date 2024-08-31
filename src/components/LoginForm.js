@@ -1,4 +1,5 @@
 import React from "react";
+import LoginModal from "./LoginModal";
 
 class LoginForm extends React.Component {
     state = {
@@ -7,6 +8,7 @@ class LoginForm extends React.Component {
         emailError: '',
         passwordError: '',
         submitAttempted: false,
+        showModal: false,
       };
     
       handleChange = (e) => {
@@ -37,18 +39,26 @@ class LoginForm extends React.Component {
             
     
             if (!this.state.email) {
-              emailError = 'Please fill in the email field.';
-            } 
+                emailError = 'Please fill in the email field.';
+            } else if (!this.validateEmail(this.state.email)) {
+                emailError = 'Please enter a valid email.'
+            }
     
             if (!this.state.password) {
-              passwordError = 'Please fill in the password field.';
+                passwordError = 'Please fill in the password field.';
+            } else if (!this.validatePassword(this.state.password)) {
+                passwordError = 'Please enter a password longer than 6 characters.';
             }
     
             this.setState({
-              emailError,
-              passwordError,
-              submitAttempted: false,
+                emailError,
+                passwordError,
+                submitAttempted: false,
             });
+
+            if (!emailError && !passwordError) {
+                this.setState({ showModal: true });
+            }
           
         } else if (prevState.email !== this.state.email) {
             if (!this.validateEmail(this.state.email)) {
@@ -73,20 +83,20 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className="w-1/2 mx-auto">
+            <div className="w-1/2 m-auto">
             <form onSubmit={this.handleSubmit}>
                 <div className="relative mb-6" data-twe-input-wrapper-init>
                     <input
                     type="text"
                     name="email"
-                    className="peer block min-h-[auto] w-full rounded border-0 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 text-black peer-focus:text-black data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-black dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-black [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-500"
                     id="emailField"
                     value={this.state.email}
                     onChange={this.handleChange}
                     placeholder="Email" />
                     <label
                     for="emailField"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
+                    className="absolute left-0 -top-5 text-gray-600 transition-all duration-200 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
                     >Email
                     </label>
                     {this.state.emailError && (
@@ -98,14 +108,14 @@ class LoginForm extends React.Component {
                     <input
                     type="password"
                     name="password"
-                    className="peer block min-h-[auto] w-full rounded border-0 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 text-black peer-focus:text-black data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-black dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-black [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-500"
                     id="passwordField"
                     value={this.state.password}
                     onChange={this.handleChange}
                     placeholder="Password" />
                     <label
                     for="passwordField"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
+                    className="absolute left-0 -top-5 text-gray-600 transition-all duration-200 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-base"
                     >Password
                     </label>
                     {this.state.passwordError && (
@@ -123,6 +133,10 @@ class LoginForm extends React.Component {
 
         
             </form>
+
+            {this.state.showModal && (
+                <LoginModal email={this.state.email} />
+                )}
             </div>
         );
     }
